@@ -1,9 +1,11 @@
-import { Snippet } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Snippet>Set up Next Ui</Snippet>
+    <main className="flex flex-col gap-4 container mx-auto p-4">
+      <div>
+        <Button>Set up Next Ui</Button>
+      </div>
     </main>
   );
 }

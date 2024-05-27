@@ -3,6 +3,10 @@ export interface Response<T = any> {
   pagination: Pagination;
 }
 
+export interface PageSlugParams<T = string> {
+  params: { slug: T };
+}
+
 export interface Anime {
   mal_id: number;
   url: string;
