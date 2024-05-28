@@ -1,5 +1,5 @@
 import TanstackProvider from "@/contexts/TanstackProvider";
-import Header from "@/presentations/layouts/header/lazy";
+import Header from "@/ui/layouts/header/lazy";
 import { NextUIProvider } from "@nextui-org/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
