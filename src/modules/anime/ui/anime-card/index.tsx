@@ -5,10 +5,7 @@ import Image from "next/image";
 
 export default function AnimeCard(props: Anime) {
   return (
-    <Card
-      isFooterBlurred
-      className="relative cursor-pointer w-full sm:w-[40%] md:w-[30%] xl:w-[20%] h-[300px] bg-zinc-600"
-    >
+    <Card isFooterBlurred className="relative cursor-pointer w-full h-[300px] bg-zinc-600">
       <CardHeader className="absolute z-10 top-1 flex-col items-start ">
         <p className="inline-flex items-center gap-2">
           <Star fill="orange" className="text-yellow-500" size={14} />

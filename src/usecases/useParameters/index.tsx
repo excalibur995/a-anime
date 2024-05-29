@@ -13,15 +13,12 @@ export default function useParameters() {
         search_params.delete(key);
       } else {
         if (search_params.has(key)) {
-          console.log("has", key);
           search_params.set(key, parameters[key]);
         } else {
-          console.log("append", key);
           search_params.append(key, parameters[key]);
         }
       }
     }
-
     push("?" + search_params.toString());
   }
 

@@ -4,7 +4,7 @@ import Header from "@/ui/layouts/header";
 import { NextUIProvider } from "@nextui-org/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Inter as Font } from "next/font/google";
+import { Raleway as Font } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 

@@ -31,7 +31,6 @@ export default function useAnimeState() {
   }, [dispatch, params.page, search_params, total]);
 
   useEffect(() => {
-    console.log(pagination.last_visible_page);
     if (total < 1 || total !== (pagination.last_visible_page || total)) {
       setTotal(pagination.last_visible_page);
     }
