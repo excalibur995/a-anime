@@ -3,15 +3,26 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function useParameters() {
-  const search_params = useSearchParams();
+  const params = useSearchParams();
+  const search_params = new URLSearchParams(params.toString());
   const { push } = useRouter();
 
   function onChangeParams(parameters: Record<string, string>) {
-    const params = new URLSearchParams(search_params.toString());
     for (const key in parameters) {
-      params.set(key, parameters[key]);
+      if (parameters[key] === "") {
+        search_params.delete(key);
+      } else {
+        if (search_params.has(key)) {
+          console.log("has", key);
+          search_params.set(key, parameters[key]);
+        } else {
+          console.log("append", key);
+          search_params.append(key, parameters[key]);
+        }
+      }
     }
-    push("?" + params.toString());
+
+    push("?" + search_params.toString());
   }
 
   return { search_params, onChangeParams };

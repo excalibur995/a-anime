@@ -1,4 +1,4 @@
-import { ExplicitGenre, Genre, Rating, Type } from "@/models/types";
+import { ExplicitGenre, Genre, OrderBy, Rating, SortBy, Status, Type } from "@/models/types";
 
 export interface Anime {
   mal_id: number;
@@ -37,6 +37,27 @@ export interface Anime {
   explicit_genres: ExplicitGenre[];
   themes: Theme[];
   demographics: Demographic[];
+}
+
+export interface AnimeParams {
+  page: number;
+  limit: number;
+  q: string;
+  type: Type;
+  score: number;
+  min_score: number;
+  max_score: number;
+  status: Status;
+  rating: Rating;
+  sfw: boolean;
+  genres: string | string[];
+  genres_exclude: string | string[];
+  order_by: OrderBy;
+  sort: SortBy;
+  letter: string;
+  producers: string;
+  start_date: string;
+  end_date: string;
 }
 
 export interface Images {

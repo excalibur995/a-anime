@@ -1,8 +1,8 @@
 import { Anime } from "@/modules/anime/models/types";
 
 export interface AnimeSkeletonListProps {
-  limit: number;
+  limit?: number;
   anime: Anime[];
-  isError: boolean;
-  isLoading: boolean;
+  isError?: boolean;
+  isLoading?: boolean;
 }

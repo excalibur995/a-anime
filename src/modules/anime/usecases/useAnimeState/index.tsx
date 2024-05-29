@@ -1,36 +1,38 @@
 "use client";
 
-import { DEFAULT_LIMIT, DEFAULT_PAGE } from "@/models/constants";
 import useParameters from "@/usecases/useParameters";
 import { useEffect, useState } from "react";
+
+import { useAnimeDispatch, useAnimeValue } from "../../contexts/FilterContexts/hooks";
 import useAnime from "../../repo/useAnime";
-import { UseAnimeStateProps } from "./models/types";
 
-export default function useAnimeState({ params }: UseAnimeStateProps) {
-  const [page, setPage] = useState(DEFAULT_PAGE);
-  const [limit, setLimit] = useState(DEFAULT_LIMIT);
+export default function useAnimeState() {
+  const params = useAnimeValue();
+
+  const dispatch = useAnimeDispatch();
+
   const [total, setTotal] = useState(0);
-  const { search_params, onChangeParams } = useParameters();
 
-  const { response, ...repo } = useAnime({ page, limit, ...params } || {});
+  const { search_params, onChangeParams } = useParameters();
+  const { response, ...repo } = useAnime(params);
+
   const { pagination } = response;
 
   const changePage = (newPage: number) => {
     onChangeParams({ page: newPage.toString() });
-    setPage(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     const newPage = parseInt(search_params.get("page") || "1", 10);
-
-    if (newPage !== page) {
-      setPage(newPage);
+    if (newPage !== params.page) {
+      dispatch({ page: newPage });
     }
-  }, [page, search_params, total]);
+  }, [dispatch, params.page, search_params, total]);
 
   useEffect(() => {
-    if (total < 1 && total !== pagination.last_visible_page) {
+    console.log(pagination.last_visible_page);
+    if (total < 1 || total !== (pagination.last_visible_page || total)) {
       setTotal(pagination.last_visible_page);
     }
   }, [pagination.last_visible_page, total]);
@@ -39,10 +41,8 @@ export default function useAnimeState({ params }: UseAnimeStateProps) {
     repo: { ...repo, response },
     pagination: {
       ...pagination,
-      page,
-      setPage,
-      limit,
-      setLimit,
+      page: params.page!,
+      limit: params.limit!,
       changePage,
       total,
     },

@@ -1,5 +1,6 @@
 import TanstackProvider from "@/contexts/TanstackProvider";
-import Header from "@/ui/layouts/header/lazy";
+
+import Header from "@/ui/layouts/header";
 import { NextUIProvider } from "@nextui-org/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
@@ -18,8 +19,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={clsx(font.className, "min-h-screen pt-16 lg:px-4 bg-[#f8f8f8] dark:bg-[#212529] antialiased")}>
-        <Header />
         <NextUIProvider>
+          <Header />
           <TanstackProvider>{children}</TanstackProvider>
         </NextUIProvider>
       </body>

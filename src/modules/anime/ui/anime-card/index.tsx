@@ -26,7 +26,7 @@ export default function AnimeCard(props: Anime) {
         <div className="text-white text-[11px] space-y-1">
           <p>{props.status}</p>
           <span className="inline-flex flex-wrap">
-            {props.genres.map((genre) => (
+            {props.genres.slice(0, 2).map((genre) => (
               <p className="not-last-after-content" key={genre.mal_id}>
                 {genre.name}
               </p>

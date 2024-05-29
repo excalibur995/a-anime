@@ -7,6 +7,11 @@ export interface PageSlugParams<T = string> {
   params: { slug: T };
 }
 
+export interface LabelValue<T = string> {
+  label: string;
+  value: T;
+}
+
 export interface Pagination {
   current_page: number;
   last_visible_page: number;
