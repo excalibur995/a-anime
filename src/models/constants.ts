@@ -62,10 +62,19 @@ export const SORT_BY_OPTION: LabelValue<SortBy>[] = [
   { value: "asc", label: "Ascending" },
 ];
 
+export const LIMIT = (): LabelValue<string>[] => {
+  const temp: LabelValue<string>[] = [];
+  for (let index = DEFAULT_LIMIT; index <= 24; index += 6) {
+    temp.push({ value: index.toString(), label: index.toString() });
+  }
+  return temp;
+};
+
 export const ADVANCE_SELECT_DATA = [
   { placeholder: "Select Status", data: ANIME_STATUS, name: "status" },
   { placeholder: "Select Type", data: ANIME_TYPE, name: "type" },
   { placeholder: "Select Ratings", data: ANIME_RATINGS, name: "rating" },
   { placeholder: "Order by", data: ORDER_BY_OPTION, name: "order_by" },
   { placeholder: "Sort by", data: SORT_BY_OPTION, name: "sort" },
+  { placeholder: "Page Limit", data: LIMIT(), name: "limit" },
 ] as const;

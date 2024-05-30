@@ -1,12 +1,16 @@
 import { useAnimeDispatch, useAnimeValue } from "@/modules/anime/contexts/FilterContexts/hooks";
+import { reducer } from "@/modules/anime/contexts/FilterContexts/usecases/reducer";
 import { AnimeParams } from "@/modules/anime/models/types";
 import useParameters from "@/usecases/useParameters";
-import { KeyboardEvent, useEffect, useRef } from "react";
+import { KeyboardEvent, useEffect, useReducer, useRef } from "react";
 
 export default function useAdvanceSearch() {
-  const inputRef = useRef<HTMLInputElement>(null);
   const params = useAnimeValue();
   const dispatch = useAnimeDispatch();
+
+  const [state, setState] = useReducer(reducer, params);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const { search_params, onChangeParams } = useParameters();
 
   const onResetPage = () => {
@@ -14,9 +18,16 @@ export default function useAdvanceSearch() {
     onChangeParams({ page: "1" });
   };
 
-  const onHandleChanges = (name: keyof AnimeParams, e: string) => {
-    dispatch({ [name]: e });
-    onChangeParams({ [name]: e });
+  const onChange = (name: keyof AnimeParams, e: string) => {
+    setState({ [name]: e });
+  };
+
+  const onHandleChanges = () => {
+    for (const key in state) {
+      dispatch({ [key]: state[key as keyof AnimeParams] });
+      onChangeParams({ [key]: state[key as keyof AnimeParams] as string });
+    }
+
     onResetPage();
   };
 
@@ -27,7 +38,8 @@ export default function useAdvanceSearch() {
   };
 
   const onHandleSearch = () => {
-    onHandleChanges("q", inputRef.current?.value || "");
+    dispatch({ q: inputRef.current?.value || "" });
+    onChangeParams({ q: inputRef.current?.value || "" });
   };
 
   useEffect(() => {
@@ -53,6 +65,8 @@ export default function useAdvanceSearch() {
 
   return {
     params,
+    state,
+    onChange,
     inputRef,
     onHandleChanges,
     onHandleKeyPress,

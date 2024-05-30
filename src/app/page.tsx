@@ -1,5 +1,5 @@
 import AdvanceSearch from "@/modules/anime/components/advance-search-anime";
-import AnimeList from "@/modules/anime/components/anime-list/lazy";
+import AnimeList from "@/modules/anime/components/anime-list";
 import { AnimeProvider } from "@/modules/anime/contexts/FilterContexts";
 
 export default function Home() {

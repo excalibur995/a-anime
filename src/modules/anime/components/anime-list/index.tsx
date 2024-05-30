@@ -7,13 +7,13 @@ import AnimeListPresentation from "./presentations/anime-list-ui";
 export default function AnimeList() {
   const {
     repo: { isError, isLoading, response },
-    pagination: { page, changePage, total, limit },
+    pagination: { page, changePage, total },
   } = useAnimeState();
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-1 flex-wrap gap-2 justify-center">
-        <AnimeListPresentation limit={limit} isError={isError} isLoading={isLoading} anime={response.data} />
+        <AnimeListPresentation isError={isError} isLoading={isLoading} anime={response.data} />
       </div>
       {total > 0 && (
         <Pagination
