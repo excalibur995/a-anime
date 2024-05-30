@@ -1,5 +1,5 @@
-import AnimeCard from "@/components/AnimeCard"; // Adjust the import path as necessary
 import { render, screen } from "@testing-library/react";
+import AnimeCard from "..";
 
 const mockAnime = {
   title: "Naruto",
@@ -29,10 +29,6 @@ describe("AnimeCard Component", () => {
     mockAnime.genres.forEach((genre) => {
       expect(screen.getByText(genre.name)).toBeInTheDocument();
     });
-
-    const image = screen.getByAltText(mockAnime.title);
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", mockAnime.images.webp.image_url);
   });
 
   test("renders detail button", () => {

@@ -19,7 +19,7 @@ export default function Drawer({ title, children }: PropsWithChildren<DrawerProp
 
   return (
     <div>
-      <Button color="primary" isIconOnly onClick={toggleDrawer}>
+      <Button data-testid="trigger" color="primary" isIconOnly onClick={toggleDrawer}>
         <SlidersHorizontal color="white" size={16} />
       </Button>
       <div className={`fixed inset-0 z-40 ${isOpen ? "block" : "hidden"}`} onClick={toggleDrawer}>
@@ -32,7 +32,7 @@ export default function Drawer({ title, children }: PropsWithChildren<DrawerProp
       >
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-lg font-semibold">{title}</h2>
-          <button onClick={toggleDrawer}>
+          <button data-testid="close-button" onClick={toggleDrawer}>
             <X className="w-6 h-6" />
           </button>
         </div>
