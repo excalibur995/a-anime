@@ -1,3 +1,36 @@
+# How to Run the a-anime Project Using pnpm
+
+This guide will walk you through cloning and running the `a-anime` project using `pnpm`.
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed:
+
+- **Node.js**: Install from [nodejs.org](https://nodejs.org/)
+- **pnpm**: You can install `pnpm` globally using npm or yarn:
+
+  ```sh
+  npm install -g pnpm
+  # or
+  yarn global add pnpm
+  ```
+
+## 1. Clone the Repository
+
+`git clone https://github.com/excalibur995/a-anime.git`
+
+### 2. Navigate to the Project Directory
+
+`cd a-anime`
+
+### 3. Install Dependencies
+
+`pnpm install`
+
+### 4. Run the Development Server
+
+`pnpm dev`
+
 # Project Folder Structure
 
 This project follows a modular and organized folder structure to maintain clarity and separation of concerns. Below is an overview of the different directories and their purposes.
