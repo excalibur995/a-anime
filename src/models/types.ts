@@ -57,3 +57,11 @@ export type OrderBy =
   | "favorites";
 
 export type SortBy = "desc" | "asc";
+
+export interface ErrorResponse {
+  status: number;
+  type: string;
+  message: string;
+  error: string;
+  report_url: string;
+}

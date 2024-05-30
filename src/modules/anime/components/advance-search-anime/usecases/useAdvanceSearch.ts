@@ -22,13 +22,14 @@ export default function useAdvanceSearch() {
     setState({ [name]: e });
   };
 
-  const onHandleChanges = () => {
+  const onHandleChanges = (onHandleCallback?: () => void) => {
     for (const key in state) {
       dispatch({ [key]: state[key as keyof AnimeParams] });
       onChangeParams({ [key]: state[key as keyof AnimeParams] as string });
     }
 
     onResetPage();
+    onHandleCallback?.();
   };
 
   const onHandleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {

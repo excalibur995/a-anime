@@ -3,8 +3,9 @@
 import { ADVANCE_SELECT_DATA } from "@/models/constants";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import useAdvanceSearch from "../../usecases/useAdvanceSearch";
+import { FlterProps } from "./models/types";
 
-export default function FilterSearchComponents() {
+export default function FilterSearchComponents(props: FlterProps) {
   const { onHandleChanges, onChange, state } = useAdvanceSearch();
 
   return (
@@ -27,7 +28,9 @@ export default function FilterSearchComponents() {
           </Select>
         ))}
       </div>
-      <Button onClick={onHandleChanges}>Apply</Button>
+      <Button color="secondary" onClick={() => onHandleChanges(props.onApplyCallback)}>
+        Apply
+      </Button>
     </div>
   );
 }
