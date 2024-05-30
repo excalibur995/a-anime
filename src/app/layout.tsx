@@ -18,7 +18,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={clsx(font.className, "min-h-screen pt-16 lg:px-4 bg-[#f8f8f8] dark:bg-[#212529] antialiased")}>
+      <body
+        className={clsx(
+          font.className,
+          "min-h-screen pt-16 overflow-x-hidden lg:px-4 bg-[#f8f8f8] dark:bg-[#212529] antialiased"
+        )}
+      >
         <NextUIProvider>
           <Header />
           <TanstackProvider>{children}</TanstackProvider>
