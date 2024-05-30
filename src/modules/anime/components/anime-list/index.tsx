@@ -2,7 +2,7 @@
 
 import { Pagination } from "@nextui-org/react";
 import useAnimeState from "../../usecases/useAnimeState";
-import AnimeListPresentation from "./presentations/anime-list-ui";
+import AnimeListPresentation from "./ui/anime-list-ui";
 
 export default function AnimeList() {
   const {

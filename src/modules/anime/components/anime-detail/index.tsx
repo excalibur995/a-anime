@@ -1,4 +1,4 @@
-import AnimeDetailCard from "./presentations/AnimeDetailCard";
+import AnimeDetailCard from "./ui/AnimeDetailCard";
 import useAnimeDetailState from "./usecases/useAnimeDetailState";
 
 function AnimeDetail() {
